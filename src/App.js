@@ -138,7 +138,7 @@ function ValidateArray(){
 //rendered information below
   return (
     <div className="flex space-x-4n m-0 ">
-      {ValidateArray()}
+      {ValidateArray}
 {/*Dropzone for .csv file*/}
       <div
         className={` flex flex-wrap content-center h-auto  p-6 w-2/12  ${highlighted ? "border-blue-600 bg-blue-100" : "border-gray-600"
@@ -181,7 +181,8 @@ function ValidateArray(){
           placeholder="Code will appear below:"
           value={createMarkUp.join("")}
         >        
-        
+              {ValidateArray()}
+
 
         </textarea>
         <div className=" relative bottom-0 mt-6">
