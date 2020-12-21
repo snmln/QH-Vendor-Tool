@@ -151,6 +151,7 @@ function ValidateArray(){
         onDragOver={(e) => {
           e.preventDefault();
         }}
+
         onDrop={(e) => {
           e.preventDefault();
           setHighlighted(false);
@@ -161,7 +162,6 @@ function ValidateArray(){
               const result = parse(text, { header: true });
               setContacts((existing) => [...existing, ...result.data]);
             });
-            ValidateArray();
         }}
       >
         <div className={`text-center mx-auto text-3xl p-5 text-gray-500 ${highlighted ? "text-gray-800" : "border-gray-600"
@@ -176,13 +176,12 @@ function ValidateArray(){
       <div className="relative flex flex-col h-screen w-10/12 p-6 justify-self-center bg-gray-800	">
 {/*Text area where code will populate*/}
         <textarea className="resize-none bg-gray-800 text-white overflow-auto h-full w-full m-0"
-        
+        onChange={ValidateArray()}
           ref={textAreaRef}
           placeholder="Code will appear below:"
           value={createMarkUp.join("")}
         >        
-              
-
+        
 
         </textarea>
         <div className=" relative bottom-0 mt-6">
