@@ -18,47 +18,47 @@ export default function App() {
   const [copySuccess, setCopySuccess] = React.useState(false)
 
 
-//toast closed and setting copy status to false
-  function toastClose(){
-    setTimeout(function(){setCopySuccess(false)}, 1000)
+  //toast closed and setting copy status to false
+  function toastClose() {
+    setTimeout(function () { setCopySuccess(false) }, 1000)
     //console.log(copySuccess)
   }
 
-//copy code button functionality
+  //copy code button functionality
   function copyText(e) {
     setCopySuccess(true)
     textAreaRef.current.select()
     document.execCommand('copy')
     e.target.focus();
-    setTimeout(function(){setCopySuccess(false)}, 4000)
+    setTimeout(function () { setCopySuccess(false) }, 4000)
   }
 
 
-//Clear text area 
-  function clearText(e){
+  //Clear text area 
+  function clearText(e) {
     e.preventDefault();
-    textAreaRef.current.value ='';
+    textAreaRef.current.value = '';
     setContacts((existing) => []);
   };
 
-  function ValidateArray(){
+  function ValidateArray() {
     //validatePhoneNumber()
     checkUrl()
     //console.log("this is from validateArray")
-   // console.log(contacts)
-   // console.log(newduplicateArray)
+    // console.log(contacts)
+    // console.log(newduplicateArray)
   }
 
-//checks url for appropriate formatting
+  //checks url for appropriate formatting
   function checkUrl() {
     for (let i = 0; i < newduplicateArray.length; ++i) {
       let contact = newduplicateArray[i];
-//if not lead in formatting at all it will be added and returned
-      if (!contact.url.includes("https://") && !contact.url.includes("http://") &&  !contact.url.includes("www.")) {
+      //if not lead in formatting at all it will be added and returned
+      if (!contact.url.includes("https://") && !contact.url.includes("http://") && !contact.url.includes("www.")) {
         var hypertextTransferWorldWideWeb = "http://www."
         contact.url = hypertextTransferWorldWideWeb.concat(contact.url)
-//if only contains www. lead in remaining "https://" will be added
-      } else if (!contact.url.includes("https://") && !contact.url.includes("http://")&& contact.url.includes("www.")) {
+        //if only contains www. lead in remaining "https://" will be added
+      } else if (!contact.url.includes("https://") && !contact.url.includes("http://") && contact.url.includes("www.")) {
         var hypertextTransfer = "http://"
         contact.url = hypertextTransfer.concat(contact.url)
       }
@@ -67,25 +67,25 @@ export default function App() {
 
   };
 
-//Validate Phone Numbers
-/*
-  function validatePhoneNumber(){
-
-    var phoneno =/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-        for (let i = 0; i < newduplicateArray.length; ++i){
-      let contact = newduplicateArray[i];
-
-     if(!contact.phoneNumber.match(phoneno) && contact.phoneNumber.length > 1){
-        let errorMessage = "CHECK THIS PHONE NUMBER-->"
-        contact.phoneNumber = errorMessage.concat(contact.phoneNumber)
-        console.log(contact.phoneNumber);
-      }
+  //Validate Phone Numbers
+  /*
+    function validatePhoneNumber(){
+  
+      var phoneno =/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+          for (let i = 0; i < newduplicateArray.length; ++i){
+        let contact = newduplicateArray[i];
+  
+       if(!contact.phoneNumber.match(phoneno) && contact.phoneNumber.length > 1){
+          let errorMessage = "CHECK THIS PHONE NUMBER-->"
+          contact.phoneNumber = errorMessage.concat(contact.phoneNumber)
+          console.log(contact.phoneNumber);
+        }
+    }
   }
-}
-*/
-//final markup string created conditionally based on what information was provided.
+  */
+  //final markup string created conditionally based on what information was provided.
   let createMarkUp = newduplicateArray.map((contact) => {
-//if there is an SSO item it will print out the script 
+    //if there is an SSO item it will print out the script 
     if (contact.SSO.length != "") {
       return `
       <p>${contact.Description}<br>
@@ -96,7 +96,7 @@ export default function App() {
         </a>
       </p>`
     } else if (contact.phoneNumber.length <= 0) {
-//if there is no telephone number
+      //if there is no telephone number
       return `
       <p>${contact.Description}<br>
             <a 
@@ -106,7 +106,7 @@ export default function App() {
             </a>
       </p>`
     } else if (contact.phoneNumber) {
-//if there is a telephone number
+      //if there is a telephone number
       return `
       <p>${contact.Description}<br>
             <a 
@@ -121,13 +121,13 @@ export default function App() {
     }
   }
   );
-  
-//toast notification 
+
+  //toast notification 
   let toastNotification = (
     <div onClick={toastClose} className="alert-toast fixed bottom-0 right-0 m-8 w-5/6 md:w-full max-w-sm" >
       <input type="checkbox" className="hidden" id="footertoast" ref={toastNotificationRef} />
-      <label 
-      className="close cursor-pointer flex items-start justify-between w-full p-2 bg-green-500 h-24 rounded shadow-lg text-white" title="close" 
+      <label
+        className="close cursor-pointer flex items-start justify-between w-full p-2 bg-green-500 h-24 rounded shadow-lg text-white" title="close"
       >
         Copied to Clipboard!
       <svg className="fill-current text-white" width="18" height="18" viewBox="0 0 18 18">
@@ -138,10 +138,10 @@ export default function App() {
   );
 
 
-//rendered information below
+  //rendered information below
   return (
     <div className="flex space-x-4n m-0 ">
-{/*Dropzone for .csv file*/}
+      {/*Dropzone for .csv file*/}
       <div
         className={` flex flex-wrap content-center h-auto  p-6 w-2/12  ${highlighted ? "border-blue-600 bg-blue-100" : "border-gray-600"
           }`}
@@ -165,8 +165,6 @@ export default function App() {
               const result = parse(text, { header: true });
               setContacts((existing) => [...existing, ...result.data]);
             });
-           {/* console.log("this is from drop")*/}
-
         }}
       >
         <div className={`text-center mx-auto text-3xl p-5 text-gray-500 ${highlighted ? "text-gray-800" : "border-gray-600"
@@ -176,35 +174,35 @@ export default function App() {
             <FontAwesomeIcon icon={faArrowDown} size="lg" />
           </div>
         </div>
-        {ValidateArray()}
       </div>
+      {ValidateArray()}
 
       <div className="relative flex flex-col h-screen w-10/12 p-6 justify-self-center bg-gray-800	">
-{/*Text area where code will populate*/}
+        {/*Text area where code will populate*/}
         <textarea className="resize-none bg-gray-800 text-white overflow-auto h-full w-full m-0"
           ref={textAreaRef}
           placeholder="Code will appear below:"
           value={createMarkUp.join("")}
-        >        
-        
+        >
+
 
         </textarea>
         <div className=" relative bottom-0 mt-6">
-{/* Copy code button */}
+          {/* Copy code button */}
 
           <button onClick={copyText}
             className="text-white bg-transparent border border-solid border-white hover:bg-white hover:text-gray-800  active:bg-white font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1"
             type="button" >
             Copy code
           </button>
-{/* clear content button */}
-             <button onClick={clearText}
+          {/* clear content button */}
+          <button onClick={clearText}
             className="text-white bg-transparent border border-solid border-white hover:bg-white hover:text-gray-800  active:bg-white font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none ml-8 mb-1"
             type="button" >
-            Clear 
+            Clear
           </button>
         </div>
-        { copySuccess ? <div>{toastNotification}</div> : null}
+        {copySuccess ? <div>{toastNotification}</div> : null}
       </div>
     </div>
   );
