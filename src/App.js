@@ -59,6 +59,7 @@ export default function App() {
   };
 
 //Validate Phone Numbers
+/*
   function validatePhoneNumber(){
 
     var phoneno =/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
@@ -72,7 +73,7 @@ export default function App() {
       }
   }
 }
-
+*/
 //final markup string created conditionally based on what information was provided.
   let createMarkUp = newduplicateArray.map((contact) => {
 //if there is an SSO item it will print out the script 
@@ -111,11 +112,10 @@ export default function App() {
     }
   }
   );
-
+  
 function ValidateArray(){
-  validatePhoneNumber()
+  //validatePhoneNumber()
   checkUrl()
-  //console.log('validateArray was run')
 }
 
 
