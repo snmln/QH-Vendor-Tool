@@ -2,7 +2,7 @@
 // Sean Malone Front-end Developer
 // contact: sean.malone@quantum-health.com
 
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { parse } from "papaparse";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons'
@@ -60,9 +60,8 @@ export default function App() {
 
 //Validate Phone Numbers
   function validatePhoneNumber(){
-    
+
     var phoneno =/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-    var emptyNumber = '';
         for (let i = 0; i < newduplicateArray.length; ++i){
       let contact = newduplicateArray[i];
 
