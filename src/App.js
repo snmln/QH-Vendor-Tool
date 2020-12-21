@@ -151,7 +151,7 @@ function ValidateArray(){
         onDragOver={(e) => {
           e.preventDefault();
         }}
-
+        onChange={ValidateArray()}
         onDrop={(e) => {
           e.preventDefault();
           setHighlighted(false);
@@ -176,7 +176,7 @@ function ValidateArray(){
       <div className="relative flex flex-col h-screen w-10/12 p-6 justify-self-center bg-gray-800	">
 {/*Text area where code will populate*/}
         <textarea className="resize-none bg-gray-800 text-white overflow-auto h-full w-full m-0"
-        onChange={ValidateArray()}
+        
           ref={textAreaRef}
           placeholder="Code will appear below:"
           value={createMarkUp.join("")}
