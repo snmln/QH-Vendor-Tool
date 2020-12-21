@@ -21,7 +21,7 @@ export default function App() {
 //toast closed and setting copy status to false
   function toastClose(){
     setTimeout(function(){setCopySuccess(false)}, 1000)
-    console.log(copySuccess)
+    //console.log(copySuccess)
   }
 
 //copy code button functionality
@@ -41,6 +41,13 @@ export default function App() {
     setContacts((existing) => []);
   };
 
+  function ValidateArray(){
+    //validatePhoneNumber()
+    checkUrl()
+    //console.log("this is from validateArray")
+   // console.log(contacts)
+   // console.log(newduplicateArray)
+  }
 
 //checks url for appropriate formatting
   function checkUrl() {
@@ -56,6 +63,8 @@ export default function App() {
         contact.url = hypertextTransfer.concat(contact.url)
       }
     }
+    //console.log("this is from checkURL")
+
   };
 
 //Validate Phone Numbers
@@ -113,12 +122,6 @@ export default function App() {
   }
   );
   
-function ValidateArray(){
-  //validatePhoneNumber()
-  checkUrl()
-}
-
-
 //toast notification 
   let toastNotification = (
     <div onClick={toastClose} className="alert-toast fixed bottom-0 right-0 m-8 w-5/6 md:w-full max-w-sm" >
@@ -162,6 +165,8 @@ function ValidateArray(){
               const result = parse(text, { header: true });
               setContacts((existing) => [...existing, ...result.data]);
             });
+           {/* console.log("this is from drop")*/}
+
         }}
       >
         <div className={`text-center mx-auto text-3xl p-5 text-gray-500 ${highlighted ? "text-gray-800" : "border-gray-600"
@@ -171,12 +176,12 @@ function ValidateArray(){
             <FontAwesomeIcon icon={faArrowDown} size="lg" />
           </div>
         </div>
+        {ValidateArray()}
       </div>
 
       <div className="relative flex flex-col h-screen w-10/12 p-6 justify-self-center bg-gray-800	">
 {/*Text area where code will populate*/}
         <textarea className="resize-none bg-gray-800 text-white overflow-auto h-full w-full m-0"
-        onChange={ValidateArray()}
           ref={textAreaRef}
           placeholder="Code will appear below:"
           value={createMarkUp.join("")}
