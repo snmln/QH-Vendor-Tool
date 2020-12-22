@@ -86,6 +86,7 @@ export default function App() {
   //final markup string created conditionally based on what information was provided.
   let createMarkUp = newduplicateArray.map((contact) => {
     //if there is an SSO item it will print out the script 
+    checkUrl()
     if (contact.SSO.length != "") {
       return `
       <p>${contact.Description}<br>
