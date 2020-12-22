@@ -5,8 +5,15 @@
 import React, { useRef } from 'react';
 import { parse } from "papaparse";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowDown } from '@fortawesome/free-solid-svg-icons'
+import { faArrowDown, faDownload } from '@fortawesome/free-solid-svg-icons'
 import './toast.css'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import { render } from '@testing-library/react';
 
 
 export default function App() {
@@ -31,6 +38,12 @@ export default function App() {
     document.execCommand('copy')
     e.target.focus();
     setTimeout(function () { setCopySuccess(false) }, 4000)
+  }
+
+//Download excel
+  function DownloadExcel(){
+   
+    console.log('from download .csv template')
   }
 
 
@@ -168,6 +181,7 @@ export default function App() {
             });
         }}
       >
+
         <div className={`text-center mx-auto text-3xl p-5 text-gray-500 ${highlighted ? "text-gray-800" : "border-gray-600"
           }`}>
           DROP .CSV HERE
@@ -188,11 +202,24 @@ export default function App() {
 
 
         </textarea>
+       
         <div className=" relative bottom-0 mt-6">
           {/* Copy code button */}
-
-          <button onClick={copyText}
+         {/*<Router>
+           <Link to='./public/assets/Quantum_Health_Vendor_Template.xlsx' download> */}
+             <a href="./assets/Quantum_Health_Vendor_Template.xlsx" download>
+          <button 
             className="text-white bg-transparent border border-solid border-white hover:bg-white hover:text-gray-800  active:bg-white font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1"
+            type="button" 
+            onClick={DownloadExcel}
+            >
+            <FontAwesomeIcon icon={faDownload} size="md" /> .csv Template
+          </button>
+          </a>
+        {/*</Link>
+          </Router>*/}
+          <button onClick={copyText}
+            className="text-white bg-transparent border border-solid border-white hover:bg-white hover:text-gray-800  active:bg-white font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none ml-8 mr-1 mb-1"
             type="button" >
             Copy code
           </button>
