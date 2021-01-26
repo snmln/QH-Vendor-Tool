@@ -106,7 +106,7 @@ export default function App() {
         <a 
         class="link__external" 
         href="{$SiteDomain}${contact.SSO}" 
-        target="_blank" sso-link>${contact.Name}
+        target="_blank" sso-link>${contact.Vendor}
         </a>
       </p>`
     } else if (contact.phoneNumber.length <= 0) {
@@ -116,7 +116,7 @@ export default function App() {
             <a 
               class="link__external" 
               href="${contact.url}" 
-              target="_blank">${contact.Name}
+              target="_blank">${contact.Vendor}
             </a>
       </p>`
     } else if (contact.phoneNumber) {
@@ -126,7 +126,7 @@ export default function App() {
             <a 
               class="link__external" 
               href="${contact.url}" 
-              target="_blank">${contact.Name}
+              target="_blank">${contact.Vendor}
             </a>
                &ensp;
             <a href="tel:">${contact.phoneNumber}
